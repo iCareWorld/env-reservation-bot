@@ -3,6 +3,7 @@ services:
     platform: "linux/amd64"
     image: amaysim/serverless:3.36.0
     command: serverless
+    working_dir: /opt/app/
     volumes:
     - .:/opt/app
     environment:
