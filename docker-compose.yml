@@ -1,6 +1,6 @@
 services:
   serverless:
-    platform: "linux/amd64"
+    platform: "linux/arm64"
     image: amaysim/serverless:4.14.4-2.0.0-2510060604
     command: serverless
     working_dir: /opt/app/
@@ -11,11 +11,9 @@ services:
       AWS_SECRET_ACCESS_KEY:
       AWS_SESSION_TOKEN:
       AWS_SECURITY_TOKEN:
-      BUILDKITE_BUILD_NUMBER:
-      BUILDKITE_COMMIT:
 
   compile:
-    platform: "linux/amd64"
+    platform: "linux/arm64"
     build:
       context: .
     volumes:

@@ -4,7 +4,8 @@ frameworkVersion: '4.36.1'
 
 provider:
   name: aws
-  runtime: ruby3.2
+  runtime: ruby3.4
+  architecture: arm64
   versionFunctions: false
   stackName: ${self:service}
   region: ${opt:region, 'ap-southeast-2'}
@@ -12,15 +13,15 @@ provider:
     tags:
       # The deployment bucket is never in scope for compliance
       compliance-env: non-production
-    stackTags:
-      env: "shared"
-      service: env-reservation
-      product: operations
-      domain: infrastructure
-      compliance-env: "non-production"
-      version: ${env:BUILDKITE_BUILD_NUMBER}-${env:BUILDKITE_COMMIT}
-      has-user-data: false
-      has-ephi: false
+  stackTags:
+    env: "shared"
+    service: env-reservation
+    product: operations
+    domain: infrastructure
+    compliance-env: "non-production"
+    version: ${git:sha1}
+    has-user-data: false
+    has-ephi: false
   iamRoleStatements:
   - Effect: "Allow"
     Action:
